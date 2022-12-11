@@ -192,6 +192,9 @@ public:
   static void PrintHex(const byte *data, const uint32_t numBytes);
   static void PrintHexChar(const byte *pbtData, const uint32_t numBytes);
 
+  // Help functions to make own custom waitready
+  bool isready();
+    
 private:
   int8_t _irq = -1, _reset = -1;
   int8_t _uid[7];      // ISO14443A uid
@@ -202,7 +205,7 @@ private:
   // Low level communication functions that handle both SPI and I2C.
   void readdata(uint8_t *buff, uint8_t n);
   void writecommand(uint8_t *cmd, uint8_t cmdlen);
-  bool isready();
+  
   bool waitready(uint16_t timeout);
   bool readack();
 
